@@ -1,31 +1,30 @@
 class Item {
   int? _id;
-  String? _nama;
+  String? _name;
   int? _price;
 
-  int? get id => _id;
+  int get id => _id!;
 
-  String? get nama => this._nama;
-  set name(String value) => this._nama = value;
+  String get name => _name!;
+  set name(String value) => _name = value;
 
-  get price => this._price;
-  set price(value) => this._price = value;
+  int get price => _price!;
+  set price(int value) => _price = value;
 
-//konstruktor versi 1
-  Item(this._nama, this._price);
+  // ------------- kontruktor versi 1 -------------
+  Item(this._name, this._price);
 
-  //konstruktor versi 2 :konversi dari map ke item
+  // ------------- kontruktor versi 2 -------------
   Item.fromMap(Map<String, dynamic> map) {
     this._id = map['id'];
-    this._nama = map['nama'];
+    this._name = map['name'];
     this._price = map['price'];
   }
 
-  //konversi dari Item ke Map
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = Map<String, dynamic>();
     map['id'] = this._id;
-    map['nama'] = nama;
+    map['name'] = name;
     map['price'] = price;
     return map;
   }
